@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Afrilia Agro Uganda Limited - Premier agricultural export company delivering quality Ugandan produce to international markets across Europe, Middle East, and beyond." />
+  <meta name="keywords" content="Uganda, agricultural exports, coffee, fresh produce, vegetables, fruits, grains, export company, Kampala" />
+  <title>Afrilia Agro Uganda Ltd | Premium Agricultural Exports</title>
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="font-body text-gray-800 bg-white">
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" style="
+    position: fixed; inset: 0; z-index: 99999;
+    background: #0b190b;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 28px;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  ">
+    <img src="/logo.png" alt="Afrilia Agro Uganda Ltd"
+         style="height: 90px; width: auto; object-fit: contain;
+                animation: loaderPulse 1.6s ease-in-out infinite;" />
+    <!-- Spinner bar -->
+    <div style="width: 160px; height: 3px; border-radius: 9999px; background: rgba(255,255,255,0.1); overflow: hidden;">
+      <div style="height: 100%; border-radius: 9999px; background: linear-gradient(90deg, #C8922A, #e0b04a);
+                  animation: loaderBar 1.4s ease-in-out infinite;"></div>
+    </div>
+    <!-- Made by -->
+    <div style="position: absolute; bottom: 28px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+      <p style="color: rgba(255,255,255,0.3); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Montserrat', sans-serif;">Made &amp; Designed by</p>
+      <img src="/kavo.png" alt="Kavo" style="height: 102px; width: auto; object-fit: contain; opacity: 0.7;" />
+    </div>
+  </div>
+
+  <style>
+    @keyframes loaderPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.75; transform: scale(0.95); }
+    }
+    @keyframes loaderBar {
+      0%   { width: 0%;   margin-left: 0; }
+      50%  { width: 70%;  margin-left: 15%; }
+      100% { width: 0%;   margin-left: 100%; }
+    }
+  </style>
+
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
