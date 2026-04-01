@@ -17,7 +17,7 @@ export function renderAbout(): string {
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="reveal-left">
           <div class="relative rounded-2xl overflow-hidden shadow-xl">
-            <div class="img-placeholder w-full h-[400px] rounded-2xl">
+            <div class="img-placeholder w-full h-56 sm:h-[400px] rounded-2xl">
               <i class="fas fa-users text-4xl text-gray-400 mb-2"></i>
               <span>IMAGE PLACEHOLDER</span>
               <span class="text-xs mt-1">Save as: about-team.jpg</span>
@@ -25,6 +25,7 @@ export function renderAbout(): string {
             </div>
             <img src="/about-team.jpg" alt="Afrilia Agro team and farming operations" 
                  class="absolute inset-0 w-full h-full object-cover"
+                 style="min-height:14rem;"
                  onerror="this.style.display='none';" />
           </div>
         </div>

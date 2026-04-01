@@ -222,6 +222,87 @@
   .stagger-5 { transition-delay: 0.40s !important; }
   .stagger-6 { transition-delay: 0.48s !important; }
 
+  /* ── Step card stagger (wider gaps for clear one-by-one feel) ── */
+  .step-stagger-1 { transition-delay: 0s !important; }
+  .step-stagger-2 { transition-delay: 0.18s !important; }
+  .step-stagger-3 { transition-delay: 0.36s !important; }
+  .step-stagger-4 { transition-delay: 0.54s !important; }
+
+  /* ── Beverages Section ───────────────────── */
+  .bev-card {
+    @apply rounded-2xl overflow-hidden;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+  }
+  .bev-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(200,146,42,0.35);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.45), 0 0 0 1px rgba(200,146,42,0.2);
+  }
+  .bev-card:hover .bev-card-img img {
+    transform: scale(1.06);
+  }
+
+  .bev-tag {
+    @apply inline-flex items-center text-xs font-medium px-3 py-1 rounded-full;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .bev-price-box {
+    @apply relative rounded-xl p-4;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .bev-price-box--featured {
+    background: rgba(200,146,42,0.1);
+    border-color: rgba(200,146,42,0.4);
+  }
+  .bev-best-value {
+    @apply absolute -top-2.5 left-3 text-white text-[9px] font-black px-2 py-0.5 rounded tracking-wider;
+    background: #C8922A;
+  }
+
+  .bev-order-btn {
+    @apply w-full flex items-center gap-3 font-bold px-5 py-3.5 rounded-xl transition-all duration-300;
+    background: linear-gradient(135deg, #2d6a2d, #3d8a3d);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .bev-order-btn:hover {
+    background: linear-gradient(135deg, #3d8a3d, #4a9a4a);
+    box-shadow: 0 8px 24px rgba(45,106,45,0.45);
+    transform: translateY(-1px);
+  }
+
+  .bev-perks-bar {
+    @apply rounded-2xl p-6 grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .bev-perk {
+    @apply flex items-center gap-4 lg:px-6;
+  }
+
+  .bev-perk-icon {
+    @apply w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0;
+    background: rgba(200,146,42,0.15);
+    border: 1px solid rgba(200,146,42,0.3);
+    color: #e0b04a;
+    font-size: 1rem;
+  }
+
+  .bev-perk-divider {
+    @apply hidden lg:block w-px self-stretch;
+    background: rgba(255,255,255,0.08);
+  }
+
   /* ── Hero entrance animation ─────────────── */
   .hero-enter {
     animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -276,11 +357,61 @@
     @apply relative bg-white rounded-3xl p-8 border border-gray-100
            transition-all duration-500;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    /* no overflow-hidden here — badge and arrow live outside card bounds */
+  }
+  .step-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2d6a2d, #C8922A, #2d6a2d);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 3px 3px 0 0;
+  }
+  .step-card:hover::before {
+    transform: scaleX(1);
   }
   .step-card:hover {
-    @apply -translate-y-2 border-transparent;
-    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.13), 0 4px 16px rgba(200, 146, 42, 0.1);
+    @apply -translate-y-3 border-transparent;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.14), 0 6px 20px rgba(45,106,45,0.15);
   }
+
+  /* scan-line shimmer */
+  .step-scan-line {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.45) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: none;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .step-card:hover .step-scan-line {
+    animation: stepScanSweep 0.55s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+
+  /* icon bounce on hover */
+  .step-icon-wrap {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+  }
+  .step-card:hover .step-icon-wrap {
+    animation: stepIconBounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    box-shadow: 0 8px 24px rgba(45,106,45,0.35);
+    background: rgb(22 60 22 / 0.95);
+  }
+
+  /* step badge pulse */
+  .step-badge {
+    animation: stepBadgePulse 2.4s ease-out infinite;
+  }
+
+  /* connector arrows: hide after card 4 */
+  .step-arrow-4 { display: none !important; }
 
   /* ── Shimmer skeleton ────────────────────── */
   .shimmer {
@@ -351,11 +482,11 @@
 /* ── Mobile improvements ─────────────────── */
 @media (max-width: 640px) {
   .section-heading {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     line-height: 1.2;
   }
   .section-heading-sm {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   .btn-primary,
   .btn-green,
@@ -369,11 +500,120 @@
   .step-card {
     padding: 1.5rem;
   }
+  .step-arrow-indicator {
+    display: none !important;
+  }
   .stat-number {
     font-size: 2rem;
   }
   .card {
     border-radius: 1rem;
   }
+  /* Beverage cards image height */
+  .bev-card-img {
+    height: 13rem !important;
+  }
+  /* Perks bar 2 cols on mobile */
+  .bev-perks-bar {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .bev-perk-divider {
+    display: none !important;
+  }
+  /* contact feature rows */
+  .feature-row {
+    padding: 0.75rem;
+  }
+  /* hero section bottom padding */
+  .hero-content-wrap {
+    padding-bottom: 5rem;
+  }
+}
+
+/* ── Mobile Icon Buttons ─────────────────── */
+.mob-icon-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.mob-icon-btn:hover,
+.mob-icon-btn:active {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ── Full-screen Mobile Menu Overlay ─────── */
+.mob-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #0b1e0b 0%, #122212 55%, #1c1408 100%);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+  pointer-events: none;
+}
+.mob-overlay.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Mobile Menu Nav Items ───────────────── */
+.mob-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  color: white;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.2s ease, padding-left 0.25s cubic-bezier(0.16,1,0.3,1);
+  will-change: padding-left;
+}
+.mob-menu-item:hover,
+.mob-menu-item:active {
+  background: rgba(255,255,255,0.04);
+  padding-left: 2rem;
+}
+.mob-menu-item.active {
+  color: #e0b04a;
+}
+.mob-menu-chevron {
+  opacity: 0.3;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ── Step Card Keyframes ─────────────────── */
+@keyframes stepBadgePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(200,146,42,0.65); }
+  60%  { box-shadow: 0 0 0 10px rgba(200,146,42,0); }
+  100% { box-shadow: 0 0 0 0 rgba(200,146,42,0); }
+}
+
+@keyframes stepIconBounce {
+  0%   { transform: scale(1) rotate(0deg); }
+  30%  { transform: scale(1.18) rotate(-10deg); }
+  60%  { transform: scale(1.08) rotate(6deg); }
+  80%  { transform: scale(1.04) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes stepScanSweep {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
 }
 

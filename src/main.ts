@@ -16,30 +16,6 @@ app.innerHTML = `
 const router = new Router();
 router.init();
 
-// ── Hide loading screen ──────────────────────────────
-const hideLoader = () => {
-  const loader = document.getElementById('loading-screen');
-  if (!loader) return;
-  loader.style.opacity = '0';
-  loader.style.visibility = 'hidden';
-  setTimeout(() => loader.remove(), 650);
-};
-
-const LOADER_MIN_MS = 3000;
-const loaderStart = Date.now();
-
-const scheduleHide = () => {
-  const elapsed = Date.now() - loaderStart;
-  const remaining = Math.max(0, LOADER_MIN_MS - elapsed);
-  setTimeout(hideLoader, remaining);
-};
-
-if (document.readyState === 'complete') {
-  scheduleHide();
-} else {
-  window.addEventListener('load', scheduleHide);
-}
-
 // ── Cookie banner ─────────────────────────────────
 setupCookieBanner();
 
@@ -108,32 +84,54 @@ const setupMobileMenu = () => {
   if (mobileMenuCleanup) mobileMenuCleanup();
 
   const toggle = document.getElementById('mobile-menu-toggle');
+  const closeBtn = document.getElementById('mobile-menu-close');
   const menu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('mob-backdrop');
   if (!toggle || !menu) return;
 
+  const openMenu = () => {
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    if (backdrop) {
+      backdrop.style.opacity = '1';
+      backdrop.style.pointerEvents = 'auto';
+    }
+  };
+
+  const closeMenu = () => {
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (backdrop) {
+      backdrop.style.opacity = '0';
+      backdrop.style.pointerEvents = 'none';
+    }
+  };
+
   const onToggle = () => {
-    const isOpen = !menu.classList.contains('hidden');
-    menu.classList.toggle('hidden');
-    const icon = toggle.querySelector('i');
-    if (icon) icon.className = isOpen ? 'fas fa-bars' : 'fas fa-times';
+    menu.classList.contains('open') ? closeMenu() : openMenu();
   };
 
   const linkListeners: Array<{ el: Element; fn: () => void }> = [];
   menu.querySelectorAll('a').forEach((link) => {
-    const fn = () => {
-      menu.classList.add('hidden');
-      const icon = toggle.querySelector('i');
-      if (icon) icon.className = 'fas fa-bars';
-    };
+    const fn = () => closeMenu();
     link.addEventListener('click', fn);
     linkListeners.push({ el: link, fn });
   });
 
   toggle.addEventListener('click', onToggle);
+  closeBtn?.addEventListener('click', closeMenu);
+  backdrop?.addEventListener('click', closeMenu);
 
   mobileMenuCleanup = () => {
     toggle.removeEventListener('click', onToggle);
+    closeBtn?.removeEventListener('click', closeMenu);
+    backdrop?.removeEventListener('click', closeMenu);
     linkListeners.forEach(({ el, fn }) => el.removeEventListener('click', fn));
+    document.body.style.overflow = '';
   };
 };
 

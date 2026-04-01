@@ -75,7 +75,7 @@ export function renderContact(): string {
           <div class="card p-8 shadow-xl">
             <h3 class="text-xl font-heading font-bold text-gray-900 mb-6">Request Export Quote</h3>
             <form id="contact-form" class="space-y-5">
-              <div class="grid sm:grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
                   <input type="text" id="firstName" name="firstName" required
