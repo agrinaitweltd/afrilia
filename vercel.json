@@ -30,15 +30,19 @@
     },
     {
       "source": "/products/fruits",
-      "destination": "/products/coffee.html"
+      "destination": "/products/fruits.html"
     },
     {
       "source": "/products/grains",
-      "destination": "/products/coffee.html"
+      "destination": "/products/grains.html"
     },
     {
       "source": "/products/other-produce",
-      "destination": "/products/coffee.html"
+      "destination": "/products/other-produce.html"
+    },
+    {
+      "source": "/products/local-wholesale",
+      "destination": "/products/local-wholesale.html"
     }
   ]
 }

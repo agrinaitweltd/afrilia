@@ -17,6 +17,10 @@ export default defineConfig({
         'export-import': resolve(__dirname, 'export-import.html'),
         sourcing:       resolve(__dirname, 'sourcing.html'),
         coffee:         resolve(__dirname, 'products/coffee.html'),
+        fruits:         resolve(__dirname, 'products/fruits.html'),
+        grains:         resolve(__dirname, 'products/grains.html'),
+        'other-produce': resolve(__dirname, 'products/other-produce.html'),
+        'local-wholesale': resolve(__dirname, 'products/local-wholesale.html'),
       },
       output: {
         entryFileNames: 'assets/[name].js',
