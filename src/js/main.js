@@ -92,7 +92,7 @@
 
   /* --- Scroll-triggered animations (fade-up, slide-in, scale-in) --- */
   var animatedEls = document.querySelectorAll('.fade-up, .slide-in-left, .slide-in-right, .scale-in');
-  if (prefersReducedMotion || isMobileViewport || !('IntersectionObserver' in window)) {
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     animatedEls.forEach(function (el) {
       el.classList.add('visible');
     });
@@ -360,7 +360,7 @@
           countrySelect.appendChild(allGroup);
         }
 
-        // Hide region/town selects — data source only has country?state?city
+        // Hide region/town selects ï¿½ data source only has country?state?city
         var regionGroup = regionSelect ? regionSelect.closest('.form-group') : null;
         var townGroup = townSelect ? townSelect.closest('.form-group') : null;
         if (regionGroup) regionGroup.style.display = 'none';
@@ -423,14 +423,14 @@
 
   /* --- Product picker: populate grade sub-dropdown on selection --- */
   var productGradeMap = {
-    'coffee-arabica':  ['Washed / Fully Washed', 'Natural / Dry Process', 'Honey Process', 'Specialty Grade (SCA 80+)', 'Fine Cup (SCA 75–79)', 'Commercial Grade'],
+    'coffee-arabica':  ['Washed / Fully Washed', 'Natural / Dry Process', 'Honey Process', 'Specialty Grade (SCA 80+)', 'Fine Cup (SCA 75ï¿½79)', 'Commercial Grade'],
     'coffee-robusta':  ['Robusta Grade 1 (Screen 15+)', 'Robusta Grade 2', 'FAQ (Fair Average Quality)', 'Washed Robusta', 'Natural Robusta'],
-    'coffee-specialty':['Single Origin Micro-lot', 'Competition Grade (SCA 85+)', 'Cupping Score 80–84'],
-    'avocado':         ['Grade 1 Export — Hass', 'Grade 2 Export — Hass', 'Fuerte Grade 1', 'Mixed / Open to Spec'],
+    'coffee-specialty':['Single Origin Micro-lot', 'Competition Grade (SCA 85+)', 'Cupping Score 80ï¿½84'],
+    'avocado':         ['Grade 1 Export ï¿½ Hass', 'Grade 2 Export ï¿½ Hass', 'Fuerte Grade 1', 'Mixed / Open to Spec'],
     'mango':           ['Grade A Export (Tommy Atkins)', 'Grade A Export (Apple Mango)', 'Grade A Export (Kent / Ngowe)', 'Grade B / Processing'],
-    'pineapple':       ['Grade A Export — Smooth Cayenne', 'Grade A Export — MD2', 'Grade B'],
+    'pineapple':       ['Grade A Export ï¿½ Smooth Cayenne', 'Grade A Export ï¿½ MD2', 'Grade B'],
     'banana':          ['Class 1 Export (Cavendish)', 'Class 2', 'Green / Unripe Export Ready'],
-    'passion-fruit':   ['Grade A — Purple Passion', 'Grade A — Yellow Passion', 'Grade B'],
+    'passion-fruit':   ['Grade A ï¿½ Purple Passion', 'Grade A ï¿½ Yellow Passion', 'Grade B'],
     'jackfruit':       ['Young Green (culinary use)', 'Ripe Grade A', 'Processing Grade'],
     'papaya':          ['Grade A Export (Solo / Sunrise)', 'Grade B', 'Processing Grade'],
     'maize':           ['White Maize Grade 1 (=12.5% moisture)', 'Yellow Maize Grade 1', 'Grade 2', 'Feed Grade'],
@@ -441,8 +441,8 @@
     'groundnuts':      ['Runner Grade 1 (Blanched)', 'Virginia Grade 1', 'Grade 2', 'Oil Grade'],
     'cowpeas':         ['Grade 1', 'Grade 2', 'Mixed'],
     'soybeans':        ['Non-GMO Grade 1', 'Grade 1', 'Oil Grade'],
-    'rice':            ['Long Grain White — Grade A', 'Parboiled Grade 1', 'Brown Rice Grade 1'],
-    'vanilla':         ['Grade A — Gourmet (Whole Pods)', 'Grade B — Extract Quality', 'Green / Fresh Vanilla'],
+    'rice':            ['Long Grain White ï¿½ Grade A', 'Parboiled Grade 1', 'Brown Rice Grade 1'],
+    'vanilla':         ['Grade A ï¿½ Gourmet (Whole Pods)', 'Grade B ï¿½ Extract Quality', 'Green / Fresh Vanilla'],
     'ginger':          ['Fresh Grade 1', 'Dried Grade 1 (Sliced)', 'Ground / Powder Grade 1'],
     'turmeric':        ['Grade 1 (=3% curcumin)', 'Grade 2', 'Organic Certified'],
     'chilli':          ['Fresh Grade A', 'Dried Whole Grade 1', 'Crushed / Flakes Grade 1'],
