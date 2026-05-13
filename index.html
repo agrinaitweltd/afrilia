@@ -106,18 +106,12 @@
   </div>
 
   <!-- ======================================================
-       HERO
+       HERO — SPLIT SCREEN
        ====================================================== -->
   <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-slide" style="background-image:url('/public/hero-bg1.png')"></div>
-      <div class="hero-slide" style="background-image:url('/public/hero-bg2.png')"></div>
-      <div class="hero-slide" style="background-image:url('/public/hero-bg3.png')"></div>
-      <div class="hero-slide" style="background-image:url('/public/hero-bg4.png')"></div>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content-wrap">
+    <div class="hero-left">
       <div class="hero-content">
+        <span class="hero-badge">Uganda's Premium Coffee Exporter</span>
         <h1>Premium Ugandan<br />Coffee, <em>Authentically</em><br />Rooted in Excellence</h1>
         <p>Afrilia Agro Uganda Limited delivers world-class specialty coffee directly from Uganda's finest highland estates to discerning buyers across the globe. Certified quality, sustainable sourcing, and uncompromising excellence in every shipment.</p>
         <div class="btn-group">
@@ -125,16 +119,34 @@
           <a href="/contact" class="btn btn-outline">Request a Sample</a>
         </div>
       </div>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <strong>500+</strong>
+          <span>Farmers Connected</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <strong>20+</strong>
+          <span>Countries Served</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <strong>100%</strong>
+          <span>Uganda Sourced</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-bg">
+        <div class="hero-slide" style="background-image:url('/public/hero-bg1.png')"></div>
+        <div class="hero-slide" style="background-image:url('/public/hero-bg2.png')"></div>
+        <div class="hero-slide" style="background-image:url('/public/hero-bg3.png')"></div>
+        <div class="hero-slide" style="background-image:url('/public/hero-bg4.png')"></div>
+      </div>
+      <div class="hero-overlay"></div>
     </div>
     <div class="hero-scroll-indicator">
       <span></span>
-    </div>
-
-    <!-- Wavy torn bottom edge -->
-    <div class="hero-wave-edge" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none">
-        <path d="M0,80 L0,38 C60,28 100,52 160,44 C220,36 260,14 320,20 C380,26 400,52 460,56 C520,60 560,38 620,30 C680,22 720,40 780,46 C840,52 880,42 940,34 C1000,26 1040,14 1100,18 C1160,22 1200,46 1260,50 C1320,54 1380,38 1440,32 L1440,80 Z" fill="#ffffff"/>
-      </svg>
     </div>
   </section>
 
@@ -216,7 +228,7 @@
       </div>
 
       <div class="products-grid">
-        <div class="product-card fade-up fade-up-delay-1">
+        <div class="product-card product-card--featured fade-up fade-up-delay-1">
           <div class="product-card-img"><img src="/public/product-coffee.png" alt="Arabica Coffee" loading="lazy" /></div>
           <div class="product-card-body">
             <h3>Specialty Arabica</h3>
@@ -295,7 +307,7 @@
       <div class="process-cards-row">
 
         <!-- Card 1: Sourcing -->
-        <div class="process-card process-card--active fade-up fade-up-delay-1">
+        <div class="process-card process-card--active fade-up fade-up-delay-1" data-step="01">
           <div class="process-card-bg-pattern" aria-hidden="true">
             <svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g opacity="0.06">
@@ -331,7 +343,7 @@
         </div>
 
         <!-- Card 2: Processing -->
-        <div class="process-card fade-up fade-up-delay-2">
+        <div class="process-card fade-up fade-up-delay-2" data-step="02">
           <div class="process-card-bg-pattern" aria-hidden="true">
             <svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g opacity="0.06">
@@ -370,7 +382,7 @@
         </div>
 
         <!-- Card 3: Exporting -->
-        <div class="process-card fade-up fade-up-delay-3">
+        <div class="process-card fade-up fade-up-delay-3" data-step="03">
           <div class="process-card-bg-pattern" aria-hidden="true">
             <svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g opacity="0.06">
