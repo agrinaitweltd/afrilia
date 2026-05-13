@@ -2002,7 +2002,16 @@ footer {
   overflow: hidden;
   text-align: center;
   color: var(--white);
-}\n\n.page-banner::before {\n  content: '';\n  position: absolute;\n  inset: 0;\n  background: url('data:image/svg+xml,<svg width=\"120\" height=\"120\" xmlns=\"http://www.w3.org/2000/svg\"><circle fill=\"rgba(255,255,255,0.02)\" cx=\"60\" cy=\"60\" r=\"40\"/></svg>');\n  background-size: 120px 120px;\n  opacity: 0.2;\n}
+}
+
+.page-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg"><circle fill="rgba(255,255,255,0.02)" cx="60" cy="60" r="40"/></svg>');
+  background-size: 120px 120px;
+  opacity: 0.2;
+}
 
 .page-banner-content { position: relative; z-index: 2; }
 .page-banner h1 { color: var(--white); margin-bottom: 0.5rem; }
